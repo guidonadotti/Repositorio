@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <!-- Barra de arriba -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -36,12 +37,16 @@
       </div>
     </div>
   </nav>
+
+  <!-- Categorías -->
   <main class="pb-5">
-    <div class="text-center p-4">
+    <div class="text-center p-4" id="Categorías">
       <h2>Categorías</h2>
       <p class="lead">Verás aquí todas las categorías del sitio.</p>
     </div>
     <div class="container">
+      
+      <!-- A-Z Z-A -->
       <div class="row">
         <div class="col text-end">
           <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
@@ -54,6 +59,8 @@
           </div>
         </div>
       </div>
+
+      <!-- Filtro -->
       <div class="row">
         <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
@@ -75,12 +82,17 @@
           </div>
         </div>
       </div>
+
+      <!-- Lista -->
       <div class="row">
         <div class="list-group" id="cat-list-container">
         </div>
       </div>
+      
     </div>
   </main>
+
+  <!-- Jap -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -91,6 +103,8 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
