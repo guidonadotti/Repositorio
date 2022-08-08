@@ -1,4 +1,4 @@
-if((localStorage.getItem("mail")==null) || (localStorage.getItem("contraseña")==null)){
+if((sessionStorage.getItem("mail")==null) || (sessionStorage.getItem("contraseña")==null)){
     window.location="login.html"
 }
 
