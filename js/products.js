@@ -31,7 +31,7 @@ function insertarProductos(){
 document.addEventListener("DOMContentLoaded", function(){;
     getJSONData(autos_url).then(function(autos){
         if(autos.status === "ok"){
-            document.getElementsByClassName("alert alert-danger text-center")[0].remove();
+            /* document.getElementsByClassName("alert alert-danger text-center")[0].remove() */;
             document.getElementsByClassName("container")[1].innerHTML +=tituloAutos;
             arregloInicial=autos.data;
             insertarProductos()

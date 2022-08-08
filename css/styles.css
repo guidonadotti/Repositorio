@@ -158,10 +158,33 @@ footer p {
 }
 
 .signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  /* width: 100%;
+  max-width: 330px; */
   margin: auto;
+  text-align: center;
+}
+.imgLogin{
+  display: flex;
+  justify-content: center;
+}
+#imgLogin{
+  width: 330px;
+}
+button{
+  background-color: #0D6EFD;
+  font-size: 22px;
+  border-radius: 4px;
+  border: none;
+  color:white;
+  padding: 8px;
+  width: 120px;
+  }
+
+input{
+  width: 330px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 #spinner-wrapper {
@@ -174,6 +197,7 @@ footer p {
   z-index: 1021;
   display: none;
 }
+
 
 main {
   min-height: calc(100vh - 210px);

@@ -17,13 +17,36 @@
 </head>
 
 <body>
+  <!-- Funcionalidad en desarrollo o contenido -->
   <main class="mt-5">
-    <div class="container">
+    <!-- <div class="container">
       <div class="alert alert-danger text-center" role="alert">
         <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
       </div>
+    </div> -->
+    <div>
+      <!-- Imagen -->
+      <div class="imgLogin">
+        <img src="img/login.png" alt="e-mercado" id="imgLogin">
+      </div>
+
+      <!-- Logueo -->
+      <div class="signin">
+        <h3>Inicio de sesión</h3>
+        <p id="parMail">Email<br>
+          <input type="text" name="email" placeholder="Email" id="mail" value=""></p>
+          <p id=mailVacío></p>
+        
+        <p id="parCon">Contraseña <br>
+          <input type="password" name="contraseña" placeholder="Contraseña"id="contraseña" value=""></p>
+        <p id="contraseñaVacía"></p>
+
+        <button type="submit" id="Ingresar">Ingresar</button>
+      </div>
     </div>
   </main>
+
+  <!-- Jap -->
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -34,6 +57,8 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
+  <!-- Scripts -->
   <script src="js/login.js"></script>
 </body>
 
