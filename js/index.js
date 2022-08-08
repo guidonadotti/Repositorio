@@ -1,4 +1,7 @@
-window.location="login.html"
+if((localStorage.getItem("mail")==null) || (localStorage.getItem("contraseña")==null)){
+    window.location="login.html"
+}
+
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);

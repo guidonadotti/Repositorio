@@ -13,7 +13,9 @@ document.getElementById("Ingresar").addEventListener("click",function(){
     let mail=document.getElementById("mail").value
     let contraseña=document.getElementById("contraseña").value
     if(mail!="" && contraseña!==""){
-        window.location="index.html"
+        window.location="index.html";
+        localStorage.setItem("mail",mail);
+        localStorage.setItem("contraseña",contraseña)
     }else{
         if(mail==""){
             mailVacío()
