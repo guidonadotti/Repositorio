@@ -25,11 +25,11 @@ document.getElementById("Ingresar").addEventListener("click",function(){
         };
         if(mail!=""){
             document.getElementById("mailVacío").innerHTML="";
-            document.getElementById("mail").style.remove();
+            document.getElementById("mail").style.border="";
         };
         if(contraseña!=""){
             document.getElementById("contraseñaVacía").innerHTML="";
-            document.getElementById("contraseña").style.remove();
+            document.getElementById("contraseña").style.border="";
         }
     }
 })

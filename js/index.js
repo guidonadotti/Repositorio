@@ -1,6 +1,6 @@
 if((sessionStorage.getItem("mail")==null) || (sessionStorage.getItem("contraseña")==null)){
     window.location="login.html"
-}
+};
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
