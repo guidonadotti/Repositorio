@@ -1,9 +1,5 @@
 const autos_url = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 let arregloInicial=[];
-let tituloAutos = `<div class="text-center p-4">
-<h2>Productos</h2>
-<p class="lead">Verás aquí todos los productos de la categoría autos.</p>
-</div>`
 
 function insertarProductos(){
     let htmlContentToAppend = "";
@@ -31,8 +27,6 @@ function insertarProductos(){
 document.addEventListener("DOMContentLoaded", function(){;
     getJSONData(autos_url).then(function(autos){
         if(autos.status === "ok"){
-            /* document.getElementsByClassName("alert alert-danger text-center")[0].remove() */;
-            document.getElementsByClassName("container")[1].innerHTML +=tituloAutos;
             arregloInicial=autos.data;
             insertarProductos()
         }
