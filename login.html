@@ -21,7 +21,7 @@
   <script>
     function onSignIn(googleUser){
     var profile = googleUser.getBasicProfile();
-      console.log("Email: "+googleUser.getEmail())
+      console.log("Email: "+JSON.stringify(googleUser.getEmail()))
 }
   </script>
    
