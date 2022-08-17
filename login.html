@@ -15,27 +15,28 @@
     }
   </style>
   <!-- Google -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" 
+    content="344224737278-c3hjbfj6uo5b1e20kkgtf8nfnq16pkiu.apps.googleusercontent.com">
    
 </head>
 
 <body>
   <!-- Funcionalidad en desarrollo o contenido -->
   <main class="mt-5">
-    <!-- <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div> -->
     <div>
       <!-- Imagen -->
       <div class="imgLogin">
         <img src="img/login.png" alt="e-mercado" id="imgLogin">
       </div>
 
-      <!-- Google -->
-
       <!-- Logueo -->
       <div class="signin">
+
+        <!-- Google -->
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        
         <h3>Inicio de sesión</h3>
         <p id="parMail">Email<br>
           <div class="input">
