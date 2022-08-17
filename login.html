@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-  
+
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
@@ -17,9 +17,9 @@
   <!-- Google -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <meta name="google-signin-scope" content="profile email">
-  <meta name="google-signin-client_id" 
+  <meta name="google-signin-client_id"
     content="344224737278-c3hjbfj6uo5b1e20kkgtf8nfnq16pkiu.apps.googleusercontent.com">
-   
+
 </head>
 
 <body>
@@ -36,16 +36,27 @@
 
         <!-- Google -->
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
-        
+        <script>
+          function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+          }
+
+        </script>
+
         <h3>Inicio de sesión</h3>
         <p id="parMail">Email<br>
-          <div class="input">
-            <input type="text" name="email" placeholder="Email" id="mail" value="" >
-          </div>
-          <p id=mailVacío></p>
-        
+        <div class="input">
+          <input type="text" name="email" placeholder="Email" id="mail" value="">
+        </div>
+        <p id=mailVacío></p>
+
         <p id="parCon">Contraseña <br>
-          <input type="password" name="contraseña" placeholder="Contraseña"id="contraseña" value=""></p>
+          <input type="password" name="contraseña" placeholder="Contraseña" id="contraseña" value="">
+        </p>
         <p id="contraseñaVacía"></p>
 
         <button type="submit" id="Ingresar">Ingresar</button>
@@ -66,9 +77,9 @@
   </footer>
 
   <!-- Scripts -->
-  
+
   <script src="js/login.js"></script>
-  
+
 </body>
 
 </html>
