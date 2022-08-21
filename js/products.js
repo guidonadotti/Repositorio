@@ -1,5 +1,5 @@
-let ID= localStorage.getItem("catID")
-const productos_url = `https://japceibal.github.io/emercado-api/cats_products/${ID}.json`;
+let IDdelaCategoría= localStorage.getItem("catID")
+const productos_url = `https://japceibal.github.io/emercado-api/cats_products/${IDdelaCategoría}.json`;
 let arregloInicial=[];
 let minCount = undefined;
 let maxCount = undefined;
@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function(){
     
     //Filtrar
     /* document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        console.log("laconchadelalora")
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
