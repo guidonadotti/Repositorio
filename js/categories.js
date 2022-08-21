@@ -88,7 +88,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function(){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
             currentCategoriesArray = resultObj.data
@@ -141,4 +141,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+    document.getElementById("rangeFilterCount").addEventListener("click", function(){
+        console.log("click")
+    })
 });
