@@ -9,8 +9,9 @@ function insertarProductos(){
     for (elemento of arregloInicial.products) {
         if (((minCount == undefined) || (minCount != undefined && parseInt(arregloInicial.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(arregloInicial.cost) <= maxCount))){
+                /* onclick="setCatID(${elemento.id})" */
                 htmlContentToAppend += `
-                    <div onclick="setCatID(${elemento.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
                             <div class="col-3">
                                 <img src="${elemento.image}" alt="${elemento.description}" class="img-thumbnail">
