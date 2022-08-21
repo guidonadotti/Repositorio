@@ -7,8 +7,8 @@ let maxCount = undefined;
 function insertarProductos(){
     let htmlContentToAppend = "";
     for (elemento of arregloInicial.products) {
-        if (((minCount == undefined) || (minCount != undefined && parseInt(arregloInicial.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(arregloInicial.cost) <= maxCount))){
+        if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount))){
                 /* onclick="setCatID(${elemento.id})" */
                 htmlContentToAppend += `
                     <div class="list-group-item list-group-item-action cursor-active">
