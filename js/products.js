@@ -64,6 +64,8 @@ function insertarProductos() {
                 (elemento.name.toLocaleLowerCase().includes((Busqueda))
                  || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
             /* onclick="setCatID(${elemento.id})" */
+            /* elemento.cost=String(elemento.cost)
+            console.log(elemento.cost.length); */
             htmlContentToAppend += `
                     <div class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
@@ -88,7 +90,7 @@ function insertarProductos() {
 document.addEventListener("DOMContentLoaded", function () {
     //Título
     document.getElementsByClassName("text-center p-4")[0].
-        getElementsByTagName("span")[0].innerHTML = ` ${localStorage.getItem("categoría")}`;
+        getElementsByTagName("span")[0].innerHTML = ` ${localStorage.getItem("categoria")}`;
 
     //Fetch
     getJSONData(productos_url).then(function (productos) {
