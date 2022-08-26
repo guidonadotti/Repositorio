@@ -121,7 +121,9 @@ footer p {
   padding: 4px;
   background-color: rgba(255, 255, 255, 0.5);
 }
-
+div{
+  border-color: red;
+}
 .lds-ring div {
   box-sizing: border-box;
   display: block;
@@ -180,15 +182,20 @@ button{
   width: 120px;
   }
 
-#FiltrarYLimpiar{
-  width:50%
-}
+
 input{
   width: 330px;
   padding: 5px 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+div.btn-group button{
+  width:auto
+}
+input#Buscar{
+  width:max-content
+}
+
 
 #spinner-wrapper {
   position: fixed;

@@ -45,6 +45,8 @@
     <div class="container">
       <!-- Título -->
       <div class="text-center p-4">
+        <h2>Productos</h2>
+        <p class="lead">Verás aquí todos los productos de la categoría <span></span>.</p>
       </div>
 
       <!-- ↓ $ - ↑ $ -->
@@ -65,33 +67,49 @@
           </div>
         </div>
       </div>
-
+      
       <!-- Filtro -->
       <div class="row">
-        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+        <div class="col-md-12 mb-1 container">
           <div class="row container p-0 m-0">
-            <!-- Cantidad -->
-            <div class="col">
-              <p class="font-weight-normal text-end my-2">Precio</p>
+            <!-- Buscar -->
+            <div class="col-5">
+              <label for="Buscar"><i class="fas fa-search"></i>
+                <input type="search"placeholder="Buscar" id="Buscar"></label>
             </div>
-            <!-- Mínimo -->
-            <div class="col">
-              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-            </div>
-            <!-- Máximo -->
-            <div class="col">
-              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-            </div>
+            <div class="col text-end container">
+              <div class="row container">
+                <!-- Cantidad -->
+                <div class="col">
+                  <p class="font-weight-normal text-end my-2">Precio</p>
+                </div>
+                <!-- Mínimo -->
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin" min="0"
+                    step="100">
+                </div>
+                <!-- Máximo -->
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax" min="0"
+                    step="100">
+                </div>
 
-            <div class="col-3 p-0">
-              <div class="btn-group" role="group" id="FiltrarYLimpiar">
-                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-                <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                <div class="col p-0">
+                  <div class="btn-group" role="group" id="FiltrarYLimpiar">
+                    <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                    <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                  </div>
+                </div>
               </div>
             </div>
 
           </div>
         </div>
+      </div>
+
+      <!-- Lista -->
+      <div class="row" id="Lista">
+
       </div>
     </div>
 

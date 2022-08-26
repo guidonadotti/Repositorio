@@ -141,7 +141,4 @@ document.addEventListener("DOMContentLoaded", function(){
 
         showCategoriesList();
     });
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        console.log("click")
-    })
 });

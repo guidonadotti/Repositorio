@@ -39,3 +39,7 @@ let getJSONData = function(url){
         return result;
     });
 }
+document.addEventListener("DOMContentLoaded",function(){
+  document.getElementsByClassName("nav-item")[3].innerHTML=
+  `<a class="nav-link" href="my-profile.html">${localStorage.getItem("mail")}</a>`
+})

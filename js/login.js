@@ -1,3 +1,5 @@
+
+
 function mailVacío(){
     let mail=document.getElementById("mail")
     mail.style.border= "1px solid rgb(220, 53, 69)"
@@ -9,7 +11,8 @@ function contraseñaVacía(){
     contraseña.style.border= "1px solid rgb(220, 53, 69)"
     document.getElementById("contraseñaVacía").innerHTML=`<p style="color:rgb(220, 53, 69)">Ingresa tu contraseña</p>`
 }
-document.getElementById("Ingresar").addEventListener("click",function(){
+
+function Ingresar(){
     let mail=document.getElementById("mail").value
     let contraseña=document.getElementById("contraseña").value
     if(mail!="" && contraseña!==""){
@@ -32,5 +35,19 @@ document.getElementById("Ingresar").addEventListener("click",function(){
             document.getElementById("contraseña").style.border="";
         }
     }
+}
+document.addEventListener("DOMContentLoaded",function(){
+    document.getElementById("Ingresar").addEventListener("click",Ingresar);
+    document.getElementById("mail").addEventListener("keydown",function(letra){
+        if(letra.key=="Enter"){
+            document.getElementById("contraseña").focus()
+        }
+    });
+    document.getElementById("contraseña").addEventListener("keydown",function(letra){
+        if(letra.key=="Enter"){
+            Ingresar()
+        }
+    })
 })
+
 

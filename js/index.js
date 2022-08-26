@@ -1,8 +1,6 @@
 if((localStorage.getItem("mail")==null) || (localStorage.getItem("contraseña")==null)){
     window.location="login.html"
 };
-document.getElementsByClassName("nav-item")[3].innerHTML=
-    `<a class="nav-link" href="my-profile.html">${localStorage.getItem("mail")}</a>`
 
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
