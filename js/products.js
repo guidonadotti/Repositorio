@@ -59,9 +59,9 @@ function insertarProductos() {
         elemento.name = String(elemento.name)
         if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount)) &&
-            ((Busqueda == undefined) || (Busqueda != undefined && 
+            ((Busqueda == undefined) || (Busqueda != undefined &&
                 (elemento.name.toLocaleLowerCase().includes((Busqueda))
-                 || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
+                    || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
             /* onclick="setCatID(${elemento.id})" */
             htmlContentToAppend += `
                     <div class="list-group-item list-group-item-action cursor-active">
@@ -130,10 +130,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
         insertarProductos();
     });
+    document.getElementById("rangeFilterCountMin").addEventListener("input", function () {
+        document.getElementById("rangeFilterCountMax").min = 100 + parseInt(document.getElementById("rangeFilterCountMin").value)
+    })
+    document.getElementById("rangeFilterCountMax").addEventListener("input", function () {
+        document.getElementById("rangeFilterCountMin").max = parseInt(document.getElementById("rangeFilterCountMax").value) - 100
+    })
 
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
+        document.getElementById("rangeFilterCountMax").min = 0
+        document.getElementById("rangeFilterCountMin").max = undefined
 
         minCount = undefined;
         maxCount = undefined;

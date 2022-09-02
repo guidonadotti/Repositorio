@@ -1,15 +1,7 @@
-function mailVacio(){
-    let mail=document.getElementById("mail")
-    mail.classList="vacio"
-    document.getElementById("mailVacio").innerHTML=`Ingresa tu contraseña`
+function inputVacio(inputID){
+    let input=document.getElementById(inputID)
+    input.classList="vacio"
 }
-
-function contrasennaVacia(){
-    let contrasenna=document.getElementById("contrasenna")
-    contrasenna.classList="vacio"
-    document.getElementById("contrasennaVacia").innerHTML=`Ingresa tu contraseña`
-}
-
 function Ingresar(){
     let mail=document.getElementById("mail").value
     let contrasenna=document.getElementById("contrasenna").value
@@ -19,10 +11,12 @@ function Ingresar(){
         window.location="index.html";
     }else{
         if(mail==""){
-            mailVacio()
+            inputVacio("mail");
+            document.getElementById("mailVacio").innerHTML=`Ingresa tu contraseña`
         };
         if(contrasenna==""){
-            contrasennaVacia()
+            inputVacio("contrasenna")
+            document.getElementById("contrasennaVacia").innerHTML=`Ingresa tu contraseña`
         }
     }
 }

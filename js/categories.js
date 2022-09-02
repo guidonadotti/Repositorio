@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("clearRangeFilter").addEventListener("click", function(){
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
+        document.getElementById("rangeFilterCountMax").min = 0
+        document.getElementById("rangeFilterCountMin").max = undefined
 
         minCount = undefined;
         maxCount = undefined;
@@ -138,7 +140,13 @@ document.addEventListener("DOMContentLoaded", function(){
         else{
             maxCount = undefined;
         }
-
+       
         showCategoriesList();
     });
+    document.getElementById("rangeFilterCountMin").addEventListener("input", function () {
+        document.getElementById("rangeFilterCountMax").min = 1 + parseInt(document.getElementById("rangeFilterCountMin").value)
+    })
+    document.getElementById("rangeFilterCountMax").addEventListener("input", function () {
+        document.getElementById("rangeFilterCountMin").max = parseInt(document.getElementById("rangeFilterCountMax").value) - 1
+    })
 });
