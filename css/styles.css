@@ -189,13 +189,18 @@ input{
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+input.vacio{
+  border: 1px solid rgb(220, 53, 69);
+}
+p.vacio{
+  color:rgb(220, 53, 69)
+}
 div.btn-group button{
   width:auto
 }
 input#Buscar{
   width:max-content
 }
-
 
 #spinner-wrapper {
   position: fixed;

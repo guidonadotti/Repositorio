@@ -1,5 +1,5 @@
 let IDdelaCategoría = localStorage.getItem("catID")
-const productos_url = `https://japceibal.github.io/emercado-api/cats_products/${IDdelaCategoría}.json`;
+var productos_url = `https://japceibal.github.io/emercado-api/cats_products/${IDdelaCategoría}.json`;
 let arregloInicial = [];
 let minCount = undefined;
 let maxCount = undefined;
@@ -16,9 +16,8 @@ function sortCategories(criteria, array) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.cost);
             let bCount = parseInt(b.cost);
-
-            if (aCount > bCount) { return -1; }
-            if (aCount < bCount) { return 1; }
+            if (aCount < bCount) { return -1; }
+            if (aCount > bCount) { return 1; }
             return 0;
         });
     } else if (criteria === ORDER_DESC_BY_COST) {
@@ -26,8 +25,8 @@ function sortCategories(criteria, array) {
             let aCount = parseInt(a.cost);
             let bCount = parseInt(b.cost);
 
-            if (aCount < bCount) { return -1; }
-            if (aCount > bCount) { return 1; }
+            if (aCount > bCount) { return -1; }
+            if (aCount < bCount) { return 1; }
             return 0;
         });
     } else if (criteria === ORDER_BY_SOLD_COUNT) {
@@ -64,8 +63,6 @@ function insertarProductos() {
                 (elemento.name.toLocaleLowerCase().includes((Busqueda))
                  || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
             /* onclick="setCatID(${elemento.id})" */
-            /* elemento.cost=String(elemento.cost)
-            console.log(elemento.cost.length); */
             htmlContentToAppend += `
                     <div class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
@@ -119,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
             minCount = parseInt(minCount);
-            console.log(minCount)
         }
         else {
             minCount = undefined;
@@ -135,30 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
         insertarProductos();
     });
 
-    /*     document.getElementById("rangeFilterCountMin").addEventListener("input",function(){
-            minCount = document.getElementById("rangeFilterCountMin").value
-            if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
-                minCount = parseInt(minCount);
-                console.log(minCount)
-    
-            }
-            else {
-                minCount = undefined;
-            };
-            insertarProductos()
-        });
-        document.getElementById("rangeFilterCountMax").addEventListener("input",function(){
-            maxCount = document.getElementById("rangeFilterCountMax").value;
-            if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
-                maxCount = parseInt(maxCount);
-            }
-            else {
-                maxCount = undefined;
-            };
-    
-            insertarProductos()
-        })
-         */
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
@@ -172,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("Buscar").addEventListener("input", function () {
         Busqueda = document.getElementById("Buscar").value;
         Busqueda = String(Busqueda).toLocaleLowerCase()
-        if (Busqueda == undefined || Busqueda == null) {
+        if (Busqueda == null) {
             Busqueda = undefined
         }
         insertarProductos()

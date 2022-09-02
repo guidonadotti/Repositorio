@@ -43,3 +43,7 @@ document.addEventListener("DOMContentLoaded",function(){
   document.getElementsByClassName("nav-item")[3].innerHTML=
   `<a class="nav-link" href="my-profile.html">${localStorage.getItem("mail")}</a>`
 })
+
+if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
+  window.location="login.html"
+};

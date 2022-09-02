@@ -1,7 +1,3 @@
-if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
-    window.location="login.html"
-};
-
 document.addEventListener("DOMContentLoaded", function(){
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
@@ -14,9 +10,9 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
     document.getElementById("muebles").addEventListener("click", function() {
-        localStorage.setItem("categoria","muebles")
         localStorage.setItem("catID", 103);
+        localStorage.setItem("categoria","muebles")
         window.location = "products.html"
     });
-});
+}); 
 
