@@ -53,6 +53,11 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     insertarProductos();
 }
 
+function setProdID(id){
+    localStorage.setItem("ProdID",id)
+    window.location="product-info.html"
+}
+
 function insertarProductos() {
     let htmlContentToAppend = "";
     for (elemento of arregloInicial.products) {
@@ -64,7 +69,7 @@ function insertarProductos() {
                     || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
             /* onclick="setCatID(${elemento.id})" */
             htmlContentToAppend += `
-                    <div class="list-group-item list-group-item-action cursor-active">
+                    <div onclick="setProdID(${elemento.id})" class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
                             <div class="col-3">
                                 <img src="${elemento.image}" alt="${elemento.description}" class="img-thumbnail">
@@ -158,4 +163,13 @@ document.addEventListener("DOMContentLoaded", function () {
         insertarProductos()
     })
 });
+
+let numero="123456"
+let cifras=numero.length
+let n=cifras%3
+let m=(cifras-n)/3
+console.log(numero)
+console.log("El número tiene "+cifras+" cifras")
+console.log("n es "+n);
+console.log("m es "+m)
 

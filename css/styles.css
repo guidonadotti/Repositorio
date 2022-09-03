@@ -183,6 +183,13 @@ button{
   }
 
 
+h2{
+  margin-top:2%
+}
+p.negrita{
+  font-weight: 600;
+  font-size: large;
+}
 input{
   width: 330px;
   padding: 5px 10px;
