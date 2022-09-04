@@ -39,6 +39,7 @@
 
   <main class="pb-5 container">
     <div class="container">
+
       <h2>Título</h2>
       <hr>
       <p class="negrita">Precio</p>
@@ -58,7 +59,28 @@
           <div class="col-3 float-start"><img src="" alt="" class="src img-thumbnail"></div>
         </div>
       </div>
+      <br>
+
+      <h2>Comentar</h2>
+      <p>Tu opinión:</p>
+      <textarea name="comentario" id="opinion" rows="3" placeholder="Escriba su comentario"></textarea>
+      <br><p>Tu puntuación:</p>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <br><button type="button" class="btn btn-primary" id="Enviar">Enviar</button>
+      <button type="button" class="btn btn-light" id="Cancelar">Cancelar</button>
+
       
+      <br><br><br>
+      <h2><i class="fas fa-comments"></i> Comentarios</h2>
+      <div id="comentarios" class="row justify-content-between">
+        
+      </div>
     </div>
   </main>
 
