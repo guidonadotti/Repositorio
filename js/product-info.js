@@ -1,6 +1,8 @@
 let IdDelProducto=localStorage.getItem("ProdID")
 var producto_url=`https://japceibal.github.io/emercado-api/products/${IdDelProducto}.json`
 var comentarios_url=`https://japceibal.github.io/emercado-api/products_comments/${IdDelProducto}.json`
+let comentarios1=[]
+
 
 function estrellas(n) {
     htmlContentToAppend=""
@@ -10,6 +12,20 @@ function estrellas(n) {
     for (let i = n; i < 5; i++) {
         htmlContentToAppend+=`<span class="fa fa-star"></span>`
     }
+    return htmlContentToAppend
+}
+function insertarComentarios(){
+    let htmlContentToAppend = ""
+            for (const comentario of comentarios1) {
+                htmlContentToAppend+=
+                `<div class="col-6 border border-gray rounded">
+                    <p><span class="negrita">${comentario.user}</span> - ${comentario.dateTime} - 
+                        ${estrellas(comentario.score)}</p>
+                    <p>${comentario.description}</p>
+                </div>`
+            }
+
+            document.getElementById("comentarios").innerHTML+=htmlContentToAppend
 }
 
 document.addEventListener("DOMContentLoaded",() => {
@@ -30,17 +46,12 @@ document.addEventListener("DOMContentLoaded",() => {
     })
     getJSONData(comentarios_url).then(function (comentarios) {
         if(comentarios.status==="ok"){
-            comentarios=comentarios.data
-            let htmlContentToAppend = ""
-            for (const comentario of comentarios) {
-                htmlContentToAppend+=
-                `<div class="col-6 border border-gray rounded">
-                    <p><span class="negrita">${comentario.user}</span> - ${comentario.dateTime} - 
-                        ${estrellas(comentario.score)}</p>
-                    <p>${comentario.description}</p>
-                </div>`
+            comentarios1=comentarios.data
+            if(localStorage.getItem(`comentariosDelUsuario${IdDelProducto}`)!=null){
+                comentarios1=comentarios1.concat(JSON.parse(localStorage.getItem(`comentariosDelUsuario${IdDelProducto}`)))
             }
-            document.getElementById("comentarios").innerHTML=htmlContentToAppend
+            console.log(comentarios1);
+            insertarComentarios()
         }     
     })
     document.getElementById("Enviar").addEventListener("click",function(){
@@ -50,13 +61,42 @@ document.addEventListener("DOMContentLoaded",() => {
         let usuario=localStorage.getItem("mail")
         let fecha="juan"
 
-        document.getElementById("comentarios").innerHTML +=
-        `<div class="col-6 border border-gray rounded">
-            <p><span class="negrita">${usuario}</span> - ${fecha} - 
-                ${estrellas(puntuacion)}</p>
-            <p>${comentario}</p>
-        </div>`
-        document.getElementById("opinion").value=""
+        let comentarioDelUsuario={
+            "product": parseInt(IdDelProducto),
+            "score": puntuacion,
+            "description": comentario,
+            "user": usuario,
+            "dateTime": fecha
+        }
+
+        comentarios1=[comentarioDelUsuario]
+        insertarComentarios()
+
+        if(localStorage.getItem(`comentariosDelUsuario${IdDelProducto}`)==null){
+            localStorage.setItem(`comentariosDelUsuario${IdDelProducto}`,JSON.stringify([comentarioDelUsuario]))
+        }else{
+            let comentarios2=JSON.parse(localStorage.getItem(`comentariosDelUsuario${IdDelProducto}`))
+            comentarios2=comentarios2.concat([comentarioDelUsuario])
+            localStorage.setItem(`comentariosDelUsuario${IdDelProducto}`,JSON.stringify(comentarios2))
+        }
+        
+
+        document.getElementById("opinion").value=null
         document.getElementsByTagName("select")[0].selectedIndex=0
     })
+    document.getElementById("Cancelar").addEventListener("click",function(){
+        document.getElementById("opinion").value=null
+        document.getElementsByTagName("select")[0].selectedIndex=0
+    })
+
+    /* document.getElementById("opinion").addEventListener("input",function(){
+        for (let i = 1; i < document.getElementsByTagName("button").length; i++) {
+            const element = document.getElementsByTagName("button")[i];
+            if(document.getElementById("opinion").value==""){
+                element.disabled=true
+            }else{
+                element.disabled=false
+            }           
+        }
+    }) */
 })
