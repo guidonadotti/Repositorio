@@ -50,21 +50,21 @@
       <p id="categoria"></p>
       <p class="negrita">Vendidos</p>
       <p id="vendidos"></p>
-      <p class="negrita">Imágenes ilustrativas</p>
-      <div class="row">
-        <div class="col">
-          <div class="col-3 float-start"><img src="" alt="" class="src img-thumbnail "></div>
-          <div class="col-3 float-start"><img src="" alt="" class="src img-thumbnail"></div>
-          <div class="col-3 float-start"><img src="" alt="" class="src img-thumbnail"></div>
-          <div class="col-3 float-start"><img src="" alt="" class="src img-thumbnail"></div>
-        </div>
+
+      <p class="negrita"><i class="far fa-images"></i> Imágenes ilustrativas</p>
+      <div class="row row-cols-auto">
+        <div class="col mh-50 col-lg float-start"><img src="" alt="" class="src img-thumbnail "></div>
+        <div class="col mh-50 col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
+        <div class="col mh-50 col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
+        <div class="col mh-50 col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
       </div>
       <br>
 
-      <h2>Comentar</h2>
+      <h2><i class="far fa-comment"></i> Comentar</h2>
       <p>Tu opinión:</p>
       <textarea name="comentario" id="opinion" rows="3" placeholder="Escriba su comentario"></textarea>
-      <br><p>Tu puntuación:</p>
+      <br>
+      <p>Tu puntuación:</p>
       <select class="form-select" aria-label="Default select example">
         <option selected>1</option>
         <option value="2">2</option>
@@ -72,14 +72,23 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <br><button type="button" class="btn btn-primary" id="Enviar">Enviar</button>
-      <button type="button" class="btn btn-light" id="Cancelar">Cancelar</button>
 
-      
+      <!-- <div id="estrellas">
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </div> -->
+
+      <br><button type="button" class="btn btn-primary" id="Enviar" disabled>Enviar</button>
+      <button type="button" class="btn btn-light" id="Cancelar" disabled>Cancelar</button>
+
+
       <br><br><br>
-      <h2><i class="fas fa-comments"></i> Comentarios</h2>
+      <h2><i class="far fa-comments"></i> Comentarios</h2>
       <div id="comentarios" class="row justify-content-between">
-        
+
       </div>
     </div>
   </main>

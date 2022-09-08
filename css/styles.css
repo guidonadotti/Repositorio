@@ -202,11 +202,17 @@ input.vacio{
 p.vacio{
   color:rgb(220, 53, 69)
 }
+.fecha{
+  text-align: end;
+  position: relative;
+  color: gray;
+}
 textarea{
   resize: none;
-  width: 75%;
+  width: 700px;
   padding: 5px;
   border-radius: 5px;
+  max-width: 95%;
 }
 .form-select{
   max-width: 15%;
