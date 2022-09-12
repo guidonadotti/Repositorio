@@ -61,13 +61,11 @@ function setProdID(id){
 function insertarProductos() {
     let htmlContentToAppend = "";
     for (elemento of arregloInicial.products) {
-        elemento.name = String(elemento.name)
         if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount)) &&
             ((Busqueda == undefined) || (Busqueda != undefined &&
                 (elemento.name.toLocaleLowerCase().includes((Busqueda))
                     || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
-            /* onclick="setCatID(${elemento.id})" */
             htmlContentToAppend += `
                     <div onclick="setProdID(${elemento.id})" class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
@@ -76,10 +74,11 @@ function insertarProductos() {
                             </div>
                             <div class="col">
                                 <div class="d-flex w-100 justify-content-between">
-                                    <h4 class="mb-1">${elemento.name} - ${elemento.currency} ${elemento.cost}</h4>
-                                    <small class="text-muted">${elemento.soldCount} vendidos</small>
+                                    <h4 class="mb-1">${elemento.name}</h4>
+                                    <h4 class="mb-1">${elemento.currency} ${elemento.cost}</h4>
                                 </div>
                                 <p class="mb-1">${elemento.description}</p>
+                                <small class="text-muted">${elemento.soldCount} vendidos</small>
                             </div>
                         </div>
                     </div>

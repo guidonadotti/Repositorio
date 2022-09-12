@@ -21,7 +21,9 @@ function Ingresar(){
     }
 }
 document.addEventListener("DOMContentLoaded",function(){
-    document.getElementById("Ingresar").addEventListener("click",Ingresar);
+    document.getElementById("Ingresar").addEventListener("click",function(){
+        Ingresar()
+    });
     
     document.getElementById("mail").addEventListener("keydown",function(letra){
         if(letra.key=="Enter"){
