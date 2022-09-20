@@ -53,10 +53,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
     insertarProductos();
 }
 
-function setProdID(id){
-    localStorage.setItem("ProdID",id)
-    window.location="product-info.html"
-}
+
 
 function insertarProductos() {
     let htmlContentToAppend = "";
@@ -69,7 +66,7 @@ function insertarProductos() {
             htmlContentToAppend += `
                     <div onclick="setProdID(${elemento.id})" class="list-group-item list-group-item-action cursor-active">
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-md-3">
                                 <img src="${elemento.image}" alt="${elemento.description}" class="img-thumbnail">
                             </div>
                             <div class="col">

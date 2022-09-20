@@ -47,9 +47,28 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("categoria").innerHTML = producto.category
             document.getElementById("vendidos").innerHTML = producto.soldCount
 
-            let img = document.getElementsByTagName("img")
-            for (let i = 0; i < img.length; i++) {
-                img[i].src = producto.images[i]
+            let img = document.getElementById("imagenes")
+            img.innerHTML=
+                `<div class="carousel-item active">
+                    <img src="${producto.images[0]}" class="d-block w-100" alt="...">
+                </div>`
+            for (let i = 1; i < producto.images.length; i++) {
+                const imagen = producto.images[i];
+                img.innerHTML+=
+                `<div class="carousel-item">
+                    <img src="${imagen}" class="d-block w-100" alt="...">
+                </div>`
+            }
+            
+            for(item of producto.relatedProducts){
+                document.getElementById("productosRelacionados").getElementsByClassName("row")[0].innerHTML+=
+                    `<div class="col-6 col-md-3 ">
+                        <div onclick="setProdID(${item.id})" class="col col-lg float-start">
+                            <img src="${item.image}" alt="${item.name}" class="src img-thumbnail">
+                            
+                        </div>
+                    </div>
+                    `
             }
         }
         getJSONData(comentarios_url).then(function (comentarios) {
@@ -71,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 puntuacion = parseInt(puntuacion)
                 let usuario = localStorage.getItem("mail")
                 let fecha = new Date
-                fecha = `${fecha.getFullYear()}-${fecha.getMonth()}-${fecha.getDate()} 
+                fecha = `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()} 
                     ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
                 //Los introduce en un objeto
                 let comentarioDelUsuario = {
@@ -157,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 })
             } */
+            
         })
 
     })

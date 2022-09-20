@@ -53,7 +53,7 @@ function showCategoriesList(){
             htmlContentToAppend += `
             <div onclick="setCatIDandName(${category.id},'${category.name}')" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-md-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
                     </div>
                     <div class="col">

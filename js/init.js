@@ -39,11 +39,33 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+function cerrarSesion (){
+  localStorage.removeItem("mail");
+  localStorage.removeItem("contrasenna")
+  window.location="login.html"
+}
+
 document.addEventListener("DOMContentLoaded",function(){
   document.getElementsByClassName("nav-item")[3].innerHTML=
-  `<a class="nav-link" href="my-profile.html">${localStorage.getItem("mail")}</a>`
+  `
+    <div class="dropdown">
+      <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        ${localStorage.getItem("mail")}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><a class="dropdown-item" href="" onclick="cerrarSesion()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  `
 })
 
 if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
   window.location="login.html"
 };
+function setProdID(id){
+  localStorage.setItem("ProdID",id)
+  window.location="product-info.html"
+}

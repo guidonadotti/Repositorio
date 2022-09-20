@@ -40,7 +40,7 @@
   <main class="pb-5 container">
     <div class="container">
 
-      <h2>Título</h2>
+      <h2></h2>
       <hr>
       <p class="negrita">Precio</p>
       <p id="precio"></p>
@@ -52,12 +52,30 @@
       <p id="vendidos"></p>
 
       <p class="negrita"><i class="far fa-images"></i> Imágenes ilustrativas</p>
-      <div class="row row-cols-auto">
-        <div class="col col-lg float-start"><img src="" alt="" class="src img-thumbnail "></div>
-        <div class="col col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
-        <div class="col col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
-        <div class="col col-lg float-start"><img src="" alt="" class="src img-thumbnail"></div>
+      <!-- <div class="row row-cols-auto" id="imagenesIlustrativas"></div> -->
+      
+      <div class="row">
+        <div class="col-md-9">
+          <div id="imagenesIlustrativas" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner" id="imagenes">
+              
+            </div>
+            <button class="carousel-control-prev" type="button" 
+              data-bs-target="#imagenesIlustrativas" data-bs-slide="prev">
+    
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button"
+              data-bs-target="#imagenesIlustrativas" data-bs-slide="next">
+              
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>      
+        </div>
       </div>
+
       <br>
 
       <h2><i class="far fa-comment"></i> Comentar</h2>
@@ -88,7 +106,16 @@
       <br><br><br>
       <h2><i class="far fa-comments"></i> Comentarios</h2>
       <div id="comentarios" class="row justify-content-between">
+      </div>
 
+      <br>
+      <br>
+
+      <h2>Productos Relacionados</h2>
+      <div class="row row-cols-auto" id="productosRelacionados">
+        <div class="row">
+
+        </div>
       </div>
     </div>
   </main>
@@ -117,3 +144,5 @@
 </body>
 
 </html>
+
+
