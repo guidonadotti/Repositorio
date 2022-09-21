@@ -3,13 +3,25 @@ function inputVacio(inputID){
     input.classList="vacio"
 }
 function Ingresar(){
+    //toma los valores que el usuario ingresó
     let mail=document.getElementById("mail").value
     let contrasenna=document.getElementById("contrasenna").value
+
     if(mail!="" && contrasenna!==""){
+        //Guarda esos valores en el localStorage
         localStorage.setItem("mail",mail);
         localStorage.setItem("contrasenna",contrasenna);
-        window.location="index.html";
+
+        //En caso de que el usuario haya estado en una página y cerrado sesión
+        //se le devuelve a esa página, y sino, a index.
+        if(sessionStorage.getItem("ultimaPagina")!=null){
+            window.location=sessionStorage.getItem("ultimaPagina")
+        }else{
+            window.location="index.html";
+        }
+        
     }else{
+        //Se le solicita que ingrese en el o los inputs que haya dejado vacíos
         if(mail==""){
             inputVacio("mail");
             document.getElementById("mailVacio").innerHTML=`Ingresa tu contraseña`
@@ -24,17 +36,22 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("Ingresar").addEventListener("click",function(){
         Ingresar()
     });
-    
+    //Si el usuario da enter estando en el input del mail,
+    //se lo lleva al de la contraseña
     document.getElementById("mail").addEventListener("keydown",function(letra){
         if(letra.key=="Enter"){
             document.getElementById("contrasenna").focus()
         }
     });
+
     document.getElementById("contrasenna").addEventListener("keydown",function(letra){
         if(letra.key=="Enter"){
             Ingresar()
         }
     })
+
+    //Si el usuario escribe algo en alguno de los inputs que había dejado vacío,
+    //el mensaje y el formato del input desaparecen
     document.getElementById("mail").addEventListener("input",function(){
         let mail=document.getElementById("mail").value
         if(mail!=""){

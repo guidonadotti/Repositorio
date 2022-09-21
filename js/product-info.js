@@ -62,10 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
             
             for(item of producto.relatedProducts){
                 document.getElementById("productosRelacionados").getElementsByClassName("row")[0].innerHTML+=
-                    `<div class="col-6 col-md-3 ">
+                    `<div class="col-6 col-md-3 card">
                         <div onclick="setProdID(${item.id})" class="col col-lg float-start">
-                            <img src="${item.image}" alt="${item.name}" class="src img-thumbnail">
-                            
+                            <img src="${item.image}" alt="${item.name}" class="card-img-top">
+                            <div class="card-body">
+                                <p>${item.name}</p>   
+                            </div>
                         </div>
                     </div>
                     `

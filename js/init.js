@@ -42,7 +42,8 @@ let getJSONData = function(url){
 
 function cerrarSesion (){
   localStorage.removeItem("mail");
-  localStorage.removeItem("contrasenna")
+  localStorage.removeItem("contrasenna");
+  sessionStorage.setItem("ultimaPagina",document.location.href)
   window.location="login.html"
 }
 
@@ -67,5 +68,5 @@ if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")=
 };
 function setProdID(id){
   localStorage.setItem("ProdID",id)
-  window.location="product-info.html"
+  window.location=`product-info.html`
 }
