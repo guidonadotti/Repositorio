@@ -1,6 +1,6 @@
 function inputVacio(inputID){
     let input=document.getElementById(inputID)
-    input.classList="vacio"
+    input.classList+=" vacio"
 }
 function Ingresar(){
     //toma los valores que el usuario ingresó
@@ -52,20 +52,30 @@ document.addEventListener("DOMContentLoaded",function(){
 
     //Si el usuario escribe algo en alguno de los inputs que había dejado vacío,
     //el mensaje y el formato del input desaparecen
+
+    /* let inputs=document.getElementsByTagName("input")
+
+    for (const input of inputs) {
+        input.addEventListener("input",function(){
+            if(input.value!=""){
+                input.classList=undefined;
+                input.nextSibling.innerHTML="";
+            }  
+        })
+    } */
+
     document.getElementById("mail").addEventListener("input",function(){
         let mail=document.getElementById("mail").value
         if(mail!=""){
+            document.getElementById("mail").classList.remove("vacio");
             document.getElementById("mailVacio").innerHTML="";
-            document.getElementById("mail").classList=undefined;
         };
     })
     document.getElementById("contrasenna").addEventListener("input",function(){
         let contrasenna=document.getElementById("contrasenna").value
         if(contrasenna!=""){
+            document.getElementById("contrasenna").classList.remove("vacio");
             document.getElementById("contrasennaVacia").innerHTML="";
-            document.getElementById("contrasenna").classList=undefined;
         };
     })
 })
-
-

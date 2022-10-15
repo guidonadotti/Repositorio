@@ -70,3 +70,15 @@ function setProdID(id){
   localStorage.setItem("ProdID",id)
   window.location=`product-info.html`
 }
+
+document.head.innerHTML+=`
+<link rel="shortcut icon" href="img/jap.ico">
+`
+
+function darEspacios(numero){
+  return numero.toLocaleString("en-US").replaceAll(","," ")
+}
+
+function quitarEspacios(numero){
+  return numero.split(" ").join("")
+}

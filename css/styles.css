@@ -190,7 +190,7 @@ h2{
   font-weight: 600;
   font-size: large;
 }
-input{
+input.texto{
   width: 330px;
   padding: 5px 10px;
   border: 1px solid #ccc;
@@ -208,6 +208,9 @@ p.vacio{
   text-align: end;
   position: relative;
   color: gray;
+}
+th.primera{
+  width: 85px;
 }
 textarea{
   resize: none;

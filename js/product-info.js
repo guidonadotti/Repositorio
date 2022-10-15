@@ -1,5 +1,7 @@
+const BOTON_CARRITO=document.getElementById("agregarAlCarrito")
 let IdDelProducto = localStorage.getItem("ProdID")
 var producto_url = `https://japceibal.github.io/emercado-api/products/${IdDelProducto}.json`
+console.log(producto_url);
 var comentarios_url = `https://japceibal.github.io/emercado-api/products_comments/${IdDelProducto}.json`
 let comentarios1 = []
 //let clicknt = true
@@ -48,25 +50,27 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("vendidos").innerHTML = producto.soldCount
 
             let img = document.getElementById("imagenes")
-            img.innerHTML=
+            img.innerHTML =
                 `<div class="carousel-item active">
                     <img src="${producto.images[0]}" class="d-block w-100" alt="...">
                 </div>`
             for (let i = 1; i < producto.images.length; i++) {
                 const imagen = producto.images[i];
-                img.innerHTML+=
-                `<div class="carousel-item">
-                    <img src="${imagen}" class="d-block w-100" alt="...">
-                </div>`
+                img.innerHTML +=
+                    `<div class="carousel-item">
+                        <img src="${imagen}" class="d-block w-100" alt="...">
+                    </div>`
             }
-            
-            for(item of producto.relatedProducts){
-                document.getElementById("productosRelacionados").getElementsByClassName("row")[0].innerHTML+=
-                    `<div class="col-6 col-md-3 card">
-                        <div onclick="setProdID(${item.id})" class="col col-lg float-start">
-                            <img src="${item.image}" alt="${item.name}" class="card-img-top">
-                            <div class="card-body">
-                                <p>${item.name}</p>   
+
+            for (item of producto.relatedProducts) {
+                document.getElementById("productosRelacionados").innerHTML +=
+                    `<div class="col-6 col-md-3">
+                        <div class="card list-group-item-action cursor-active">
+                            <div onclick="setProdID(${item.id})" class="col col-lg float-start">
+                                <img src="${item.image}" alt="${item.name}" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">${item.name}</h5>   
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 puntuacion = parseInt(puntuacion)
                 let usuario = localStorage.getItem("mail")
                 let fecha = new Date
-                fecha = `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()} 
+                fecha = `${fecha.getFullYear()}-${fecha.getMonth() + 1}-${fecha.getDate()} 
                     ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`
                 //Los introduce en un objeto
                 let comentarioDelUsuario = {
@@ -149,6 +153,66 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 }
             })
+            //Toma los productos agregados al carrito
+            let carrito = localStorage.getItem("carrito")
+            carrito = JSON.parse(carrito)
+            //Declara una variable
+            let productoEnCarrito = false
+            //Si el carrito no está vacío se fija en todos los productos 
+            //si alguno tiene el mismo id que el id del producto y si
+            //es así, convierte la variable en true
+            if(carrito!=null){
+                for (const articulo of carrito){
+                    if (articulo.id == producto.id) {
+                        productoEnCarrito = true;
+                        break;
+                    }
+                }
+            }
+
+            //Si el producto está en el carrito le pone el ícono de
+            //chequeado y lo deshabilita, y sino le pone el ícono de
+            //agregar al carrito
+            if (productoEnCarrito) {
+                BOTON_CARRITO.innerHTML = `<i class="fas fa-check-circle"></i>`
+                BOTON_CARRITO.disabled = true
+            } else {
+                BOTON_CARRITO.innerHTML = `<i class="fas fa-cart-plus"></i>`
+            }
+
+            BOTON_CARRITO.addEventListener("click", function () {
+                //Agrega una alerta
+                document.body.innerHTML +=
+                    `<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ¡Producto agregado al carrito con éxito!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+
+                //Crea un objeto con el mismo formato que los del json de los
+                //productos en el carrito
+                let productoAlCarrito = {
+                    "id": producto.id,
+                    "name": producto.name,
+                    "count": 1,
+                    "unitCost": producto.cost,
+                    "currency": producto.currency,
+                    "image": producto.images[0]
+                }
+
+                //Agrega ese producto a un array del localstorage con los demás
+                //productos 
+                if (localStorage.getItem(`carrito`) == null) {
+                    localStorage.setItem(`carrito`, JSON.stringify([productoAlCarrito]))
+                } else {
+                    let carritoDeCompras = JSON.parse(localStorage.getItem(`carrito`))
+                    carritoDeCompras = [...carritoDeCompras, productoAlCarrito]
+                    localStorage.setItem(`carrito`, JSON.stringify(carritoDeCompras))
+                }
+
+                //Deshabilita el botón y le cambia el ícono
+                document.getElementById("agregarAlCarrito").innerHTML = `<i class="fas fa-check-circle"></i>`
+                document.getElementById("agregarAlCarrito").disabled = true
+            })
 
             /* let estrellas = document.getElementById("estrellas").getElementsByClassName("fa fa-star")
 
@@ -178,7 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 })
             } */
-            
+
         })
 
     })

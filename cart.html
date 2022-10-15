@@ -37,8 +37,60 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <h2 class="text-center">Carrito de compras</h2>
+      <h3>Artículos a comprar</h3>
+      <div class="table-responsive-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th class="col" scope="col" class="primera"></th>
+              <th class="col" scope="col">Nombre</th>
+              <th class="col" scope="col">Costo</th>
+              <th class="col" scope="col">Cantidad</th>
+              <th class="col" scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="productostabla">
+            
+          </tbody>
+        </table>
+      </div>
+      <hr>
+      <h3>Tipo de envío</h3>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="premium">
+        <label class="form-check-label" for="premium">
+          Premium 2 a 5 días (15%)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="express">
+        <label class="form-check-label" for="express">
+          Express 5 a 8 días (7%)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="basic">
+        <label class="form-check-label" for="basic">
+          Standard 12 a 15 días (5%)
+        </label>
+      </div><br>
+      <h3>Dirección de envío</h3>
+      <div class="row">
+        <div class="col-12 col-sm-4">
+          <label for="calle" class="form-label">Calle:</label>
+          <input type="text" class="form-control" id="calle">
+        </div>
+        <div class="col-12 col-sm-4">
+          <label for="numero" class="form-label">Número:</label>
+          <input type="text" class="form-control" id="numero">
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col col-sm-4">
+          <label for="esquina" class="form-label">Esquina:</label>
+          <input type="text" class="form-control" id="esquina">
+        </div>
       </div>
     </div>
   </main>
@@ -51,6 +103,7 @@
         2022</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
+    
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">

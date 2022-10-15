@@ -1,5 +1,6 @@
 let IDdelaCategoría = localStorage.getItem("catID")
 var productos_url = `https://japceibal.github.io/emercado-api/cats_products/${IDdelaCategoría}.json`;
+console.log(productos_url);
 let arregloInicial = [];
 let minCount = undefined;
 let maxCount = undefined;
@@ -58,6 +59,7 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
 function insertarProductos() {
     let htmlContentToAppend = "";
     for (elemento of arregloInicial.products) {
+        elemento.cost=darEspacios(elemento.cost)
         if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount)) &&
             ((Busqueda == undefined) || (Busqueda != undefined &&
@@ -159,13 +161,3 @@ document.addEventListener("DOMContentLoaded", function () {
         insertarProductos()
     })
 });
-
-let numero="123456"
-let cifras=numero.length
-let n=cifras%3
-let m=(cifras-n)/3
-console.log(numero)
-console.log("El número tiene "+cifras+" cifras")
-console.log("n es "+n);
-console.log("m es "+m)
-

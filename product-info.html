@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,17 +31,21 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
           </li>
         </ul>
       </div>
     </div>
   </nav>
-
+  
   <main class="pb-5 container">
     <div class="container">
-
-      <h2></h2>
+      
+      <div class="row justify-content-between mt-3 mb-0">
+        <h2 class="col"></h2>
+        <button title="Agregar al carrito" id="agregarAlCarrito" type="button" 
+          class="btn btn-light col-2 col-sm-1"></button>
+      </div>
       <hr>
       <p class="negrita">Precio</p>
       <p id="precio"></p>
@@ -53,26 +58,26 @@
 
       <p class="negrita"><i class="far fa-images"></i> Imágenes ilustrativas</p>
       <!-- <div class="row row-cols-auto" id="imagenesIlustrativas"></div> -->
-      
+
       <div class="row justify-content-center">
         <div class="col-md-9">
           <div id="imagenesIlustrativas" class="carousel slide carousel-dark" data-bs-ride="carousel">
             <div class="carousel-inner" id="imagenes">
-              
+
             </div>
-            <button class="carousel-control-prev" type="button" 
-              data-bs-target="#imagenesIlustrativas" data-bs-slide="prev">
-    
+            <button class="carousel-control-prev" type="button" data-bs-target="#imagenesIlustrativas"
+              data-bs-slide="prev">
+
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button"
-              data-bs-target="#imagenesIlustrativas" data-bs-slide="next">
-              
+            <button class="carousel-control-next" type="button" data-bs-target="#imagenesIlustrativas"
+              data-bs-slide="next">
+
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
-          </div>      
+          </div>
         </div>
       </div>
 
@@ -112,10 +117,9 @@
       <br>
 
       <h2>Productos Relacionados</h2>
-      <div class="row row-cols-auto" id="productosRelacionados">
-        <div class="row">
-
-        </div>
+      <br>
+      <div class="row" id="productosRelacionados">
+        
       </div>
     </div>
   </main>
@@ -144,5 +148,3 @@
 </body>
 
 </html>
-
-
