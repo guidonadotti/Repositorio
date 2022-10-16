@@ -184,9 +184,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 //Agrega una alerta
                 document.body.innerHTML +=
                     `<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    ¡Producto agregado al carrito con éxito!
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>`;
+                        ¡Producto agregado al carrito con éxito!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>`;
 
                 //Crea un objeto con el mismo formato que los del json de los
                 //productos en el carrito
