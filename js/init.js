@@ -72,7 +72,7 @@ function setProdID(id){
 }
 
 document.head.innerHTML+=`
-<link rel="shortcut icon" href="img/jap.ico">
+<link rel="shortcut icon" href="img/jap.png">
 `
 
 function darEspacios(numero){
