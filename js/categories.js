@@ -35,9 +35,8 @@ function sortCategories(criteria, array){
     return result;
 }
 
-function setCatIDandName(id,name) {
+function setCatID(id) {
     localStorage.setItem("catID", id);
-    localStorage.setItem("categoria",name)
     window.location = "products.html"
 }
 
@@ -51,10 +50,11 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatIDandName(${category.id},'${category.name}')" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id})" 
+                class="list-group-item list-group-item-action cursor-active d-none d-md-block">
                 <div class="row">
                     <div class="col-md-3">
-                        <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
+                        <img src="${category.imgSrc}" alt="${category.name}" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
@@ -62,6 +62,18 @@ function showCategoriesList(){
                             <small class="text-muted">${category.productCount} artículos</small>
                         </div>
                         <p class="mb-1">${category.description}</p>
+                    </div>
+                </div>
+            </div>
+ 
+            <div class="col-12 d-block d-md-none">
+                <div onclick="setCatID(${category.id})" 
+                    class="card mb-3 list-group-item-action cursor-active">
+                    <img src="${category.imgSrc}" alt="${category.name}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">${category.name}</h5>
+                        <p><small class="text-muted">${category.description}</small></p>
+                        <p><small class="text-muted">${category.productCount} artículos</small></p>
                     </div>
                 </div>
             </div>

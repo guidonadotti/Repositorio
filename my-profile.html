@@ -50,13 +50,65 @@
       </div>
     </div>
   </nav>
+
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="row justify-content-between mt-2">
+        <div class="col">
+          <h1>Perfil</h1>
+        </div>
+        <div class="col-2">
+          <img src="img/car1.jpg" alt="">
+        </div>
       </div>
+      <hr>
+      <form action="" class="needs-validation" novalidate id="formulario">
+        <div class="row">
+          <div class="col-sm-5 pb-3">
+            <label for="primerNombre" class="form-label">Primer Nombre*</label>
+            <input type="text" name="" id="primerNombre" class="form-control" required>
+            <div class="invalid-feedback">
+              Este campo no puede estar vacío.
+            </div>
+          </div>
+          <div class="col-sm-5 pb-3">
+            <label for="segundoNombre" class="form-label">Segundo nombre</label>
+            <input type="text" name="" id="segundoNombre" class="form-control">
+          </div>
+          <div class="col-sm-5 pb-3">
+            <label for="primerApellido" class="form-label">Primer apellido*</label>
+            <input type="text" name="" id="primerApellido" class="form-control" required>
+            <div class="invalid-feedback">
+              Este campo no puede estar vacío.
+            </div>
+          </div>
+          <div class="col-sm-5 pb-3">
+            <label for="segundoApellido" class="form-label">Segundo apellido</label>
+            <input type="text" name="" id="segundoApellido" class="form-control">
+          </div>
+          <div class="col-sm-5 pb-3">
+            <label for="mail" class="form-label">E-mail*</label>
+            <input type="email" name="" id="mail" class="form-control" required>
+            <div class="invalid-feedback" id="invalidMail">
+              Ingrese un e-mail válido.
+            </div>
+          </div>
+          <div class="col-sm-5 pb-3">
+            <label for="telefono" class="form-label">Teléfono de contacto</label>
+            <input type="number" name="" id="telefono" class="form-control">
+          </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+      </form>
     </div>
   </main>
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alerta">
+    ¡Datos guardados correctamente!
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

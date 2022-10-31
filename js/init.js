@@ -40,6 +40,11 @@ let getJSONData = function(url){
     });
 }
 
+
+if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
+  window.location="login.html"
+};
+
 function cerrarSesion (){
   localStorage.removeItem("mail");
   localStorage.removeItem("contrasenna");
@@ -47,25 +52,8 @@ function cerrarSesion (){
   window.location="login.html"
 }
 
-document.addEventListener("DOMContentLoaded",function(){
-  document.getElementsByClassName("nav-item")[3].innerHTML=
-  `
-    <div class="dropdown">
-      <a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        ${localStorage.getItem("mail")}
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-        <li><a class="dropdown-item" href="" onclick="cerrarSesion()">Cerrar sesión</a></li>
-      </ul>
-    </div>
-  `
-})
 
-if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
-  window.location="login.html"
-};
+
 function setProdID(id){
   localStorage.setItem("ProdID",id)
   window.location=`product-info.html`
@@ -82,3 +70,21 @@ function darEspacios(numero){
 function quitarEspacios(numero){
   return numero.split(" ").join("")
 }
+
+
+
+document.addEventListener("DOMContentLoaded",function(){
+  document.getElementsByClassName("nav-item")[3].innerHTML=
+  `
+    <div class="dropdown">
+      <a id="mailNavbar" class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        ${localStorage.getItem("mail")}
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
+        <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+        <li><a class="dropdown-item" href="" onclick="cerrarSesion()">Cerrar sesión</a></li>
+      </ul>
+    </div>
+  `
+})

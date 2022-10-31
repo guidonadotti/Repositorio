@@ -59,16 +59,17 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
 function insertarProductos() {
     let htmlContentToAppend = "";
     for (elemento of arregloInicial.products) {
-        elemento.cost=darEspacios(elemento.cost)
+        elemento.cost = darEspacios(elemento.cost)
         if (((minCount == undefined) || (minCount != undefined && parseInt(elemento.cost) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(elemento.cost) <= maxCount)) &&
             ((Busqueda == undefined) || (Busqueda != undefined &&
                 (elemento.name.toLocaleLowerCase().includes((Busqueda))
                     || elemento.description.toLocaleLowerCase().includes(Busqueda))))) {
             htmlContentToAppend += `
-                    <div onclick="setProdID(${elemento.id})" class="list-group-item list-group-item-action cursor-active">
+                    <div onclick="setProdID(${elemento.id})" 
+                        class="list-group-item list-group-item-action cursor-active d-none d-md-block">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-3">
                                 <img src="${elemento.image}" alt="${elemento.description}" class="img-thumbnail">
                             </div>
                             <div class="col">
@@ -81,6 +82,19 @@ function insertarProductos() {
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-12 mb-3">
+                        <div onclick="setProdID(${elemento.id})" 
+                            class="card list-group-item-action cursor-active d-block d-md-none">
+                            <img src="${elemento.image}" alt="${elemento.name}" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">${elemento.name}</h5>
+                                <p class="m-0">${elemento.currency} ${elemento.cost}</p>   
+                                <p><small class="text-muted">${elemento.description}</small></p>
+                                <p><small class="text-muted">${elemento.soldCount} vendidos</small></p>
+                            </div>
+                        </div>
+                    </div>
                     `
         }
         document.getElementById("Lista").innerHTML = htmlContentToAppend;
@@ -88,16 +102,16 @@ function insertarProductos() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    //Título
-    document.getElementsByClassName("text-center p-4")[0].
-        getElementsByTagName("span")[0].innerHTML = ` ${localStorage.getItem("categoria")}`;
-
     //Fetch
     getJSONData(productos_url).then(function (productos) {
         if (productos.status === "ok") {
             arregloInicial = productos.data;
             insertarProductos()
+            console.log(productos);
         }
+        //Título
+        document.getElementsByClassName("text-center p-4")[0].
+            getElementsByTagName("span")[0].innerHTML = ` ${productos.data.catName}`;
     });
     //Ordenar
     document.getElementById("sortAsc").addEventListener("click", function () {

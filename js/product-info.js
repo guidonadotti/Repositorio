@@ -174,7 +174,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //chequeado y lo deshabilita, y sino le pone el ícono de
             //agregar al carrito
             if (productoEnCarrito) {
-                BOTON_CARRITO.innerHTML = `<i class="fas fa-check-circle"></i>`
+                BOTON_CARRITO.innerHTML = `<i class="bi bi-cart-check-fill"></i>`
                 BOTON_CARRITO.disabled = true
             } else {
                 BOTON_CARRITO.innerHTML = `<i class="fas fa-cart-plus"></i>`
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 //Deshabilita el botón y le cambia el ícono
-                document.getElementById("agregarAlCarrito").innerHTML = `<i class="fas fa-check-circle"></i>`
+                document.getElementById("agregarAlCarrito").innerHTML = `<i class="bi bi-cart-check-fill"></i>`
                 document.getElementById("agregarAlCarrito").disabled = true
             })
 
