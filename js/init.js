@@ -7,6 +7,10 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
+if((!localStorage.getItem("mail")) || (!localStorage.getItem("contrasenna"))){
+  window.location="login.html"
+};
+
 let showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -40,19 +44,12 @@ let getJSONData = function(url){
     });
 }
 
-
-if((localStorage.getItem("mail")==null) || (localStorage.getItem("contrasenna")==null)){
-  window.location="login.html"
-};
-
 function cerrarSesion (){
   localStorage.removeItem("mail");
   localStorage.removeItem("contrasenna");
   sessionStorage.setItem("ultimaPagina",document.location.href)
   window.location="login.html"
 }
-
-
 
 function setProdID(id){
   localStorage.setItem("ProdID",id)

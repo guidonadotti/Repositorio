@@ -17,30 +17,24 @@ function sortCategories(criteria, array) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.cost);
             let bCount = parseInt(b.cost);
-            if (aCount < bCount) { return -1; }
-            if (aCount > bCount) { return 1; }
-            return 0;
+
+            return aCount-bCount;
         });
     } else if (criteria === ORDER_DESC_BY_COST) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.cost);
             let bCount = parseInt(b.cost);
 
-            if (aCount > bCount) { return -1; }
-            if (aCount < bCount) { return 1; }
-            return 0;
+            return -(aCount-bCount);
         });
     } else if (criteria === ORDER_BY_SOLD_COUNT) {
         result = array.sort(function (a, b) {
             let aCount = parseInt(a.soldCount);
             let bCount = parseInt(b.soldCount);
 
-            if (aCount > bCount) { return -1; }
-            if (aCount < bCount) { return 1; }
-            return 0;
+            return aCount-bCount;
         });
     }
-
     return result;
 }
 
@@ -53,8 +47,6 @@ function sortAndShowCategories(sortCriteria, categoriesArray) {
 
     insertarProductos();
 }
-
-
 
 function insertarProductos() {
     let htmlContentToAppend = "";
@@ -111,7 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         //Título
         document.getElementsByClassName("text-center p-4")[0].
-            getElementsByTagName("span")[0].innerHTML = ` ${productos.data.catName}`;
+            getElementsByTagName("span")[0].innerHTML = `${productos.data.catName}`;
+        document.title=`${productos.data.catName} en eMercado`
     });
     //Ordenar
     document.getElementById("sortAsc").addEventListener("click", function () {
@@ -147,18 +140,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
         insertarProductos();
     });
-    document.getElementById("rangeFilterCountMin").addEventListener("input", function () {
-        document.getElementById("rangeFilterCountMax").min = 100 + parseInt(document.getElementById("rangeFilterCountMin").value)
+
+    // Cada que se modifiquen los filtros del precio se le cambia el
+    // mínimo o el máximo de el otro input según corresponda.
+    let minimo=document.getElementById("rangeFilterCountMin")
+    let maximo=document.getElementById("rangeFilterCountMax")
+
+    minimo.addEventListener("input", function () {
+        maximo.min = 100 + parseInt(minimo.value)
     })
-    document.getElementById("rangeFilterCountMax").addEventListener("input", function () {
-        document.getElementById("rangeFilterCountMin").max = parseInt(document.getElementById("rangeFilterCountMax").value) - 100
+    maximo.addEventListener("input", function () {
+        minimo.max = parseInt(maximo.value) - 100
     })
 
     document.getElementById("clearRangeFilter").addEventListener("click", function () {
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
-        document.getElementById("rangeFilterCountMax").min = 0
-        document.getElementById("rangeFilterCountMin").max = undefined
+        minimo.value = "";
+        maximo.value = "";
+        maximo.min = 0
+        minimo.max = undefined
 
         minCount = undefined;
         maxCount = undefined;

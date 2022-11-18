@@ -14,11 +14,14 @@ const CARRITO_VACIO = `
         El carrito no puede estar vacío para comprar.
     </div>
 `
-const ALERTA=document.getElementById("alerta")
+const ALERTA = document.getElementById("alerta")
 
 let carrito = []
 let convert
 let porcentajeEnvio
+let usuarioActivo = localStorage.getItem("mail")
+let usuarios = localStorage.getItem("usuarios")
+usuarios = JSON.parse(usuarios)
 
 function agregarAlCarrito(producto) {
     CARRITO.innerHTML += `
@@ -37,25 +40,25 @@ function agregarAlCarrito(producto) {
     `
 }
 
-function eliminarProducto(id){
-    let filas=CARRITO.getElementsByTagName("tr")
+function eliminarProducto(id) {
+    let filas = CARRITO.getElementsByTagName("tr")
     for (let fila of filas) {
-        if(fila.id=="producto_"+id){
+        if (fila.id == "producto_" + id) {
             CARRITO.removeChild(fila)
             break
         }
     }
     for (let producto of carrito) {
-        if(producto.id==id){
-            let indice=carrito.indexOf(producto)
-            carrito.splice(indice,1)
-        } 
+        if (producto.id == id) {
+            let indice = carrito.indexOf(producto)
+            carrito.splice(indice, 1)
+        }
     }
 
-    if (carrito.length>0) {
-        localStorage.setItem("carrito", JSON.stringify(carrito))
-    }else{
-        localStorage.removeItem("carrito")
+    usuarios[usuarioActivo]["carrito"] = carrito
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+
+    if (carrito.length == 0) {
         document.getElementsByClassName("table-responsive-sm")[0].innerHTML = CARRITO_VACIO
     }
 
@@ -84,7 +87,8 @@ function cambiarCantidad(id, valor) {
             break
         }
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito))
+    usuarios[usuarioActivo]["carrito"] = carrito
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
 }
 
 function subtotalGeneral() {
@@ -155,15 +159,23 @@ function modal() {
                     if (FORMULARIO.classList.contains("was-validated")) {
                         divHijo.classList.add("was-validated")
                     }
-                    
+
                 }
                 //Deshabilita todos los inputs que no sean "hijos" del
                 //radio seleccionado
                 for (let input of inputs) {
-                    input.disabled = k != i   
-                }                
+                    input.disabled = k != i
+                }
             }
+
+            // Se encarga de agregarle el mensaje de validación cada que
+            // se cambia de radio seleccionado
+            let inputs = document.getElementById("pago").querySelectorAll(`[type="text"]`)
+            inputs = Array.from(inputs)
+            formaDePago(inputs)
+
             document.getElementById("metodo").innerHTML = FORMA_DE_PAGO[i].labels[0].innerHTML
+
         })
     }
 }
@@ -171,27 +183,20 @@ function modal() {
 const validar = (input) => input.checkValidity()
 
 
-function formaDePago(){
-    //No me dio tiempo a explicar esto en la defensa, pero lo que hace es tomar
-    //los inputs de texto del modal y cada que se modifique algún valor, si
-    //todos son válidos le quita la clase "invalido"* al mensaje que aparece
-    //si falta un input, y si alguno no es válido se le agrega esa clase.
+function formaDePago(inputs) {
+    // No me dio tiempo a explicar esto en la defensa, pero lo que hace es tomar
+    // los inputs de texto del modal y, si todos son válidos le quita la clase
+    // "invalido"* al mensaje que aparece si falta un input, y si alguno no es válido
+    // se le agrega esa clase.
 
-    //*La clase "invalido" si está dentro de un elemento con clase "was-validated"
-    //hace que el elemento que la tenga tenga un display block. Está en styles.css
+    // *La clase "invalido" si está dentro de un elemento con clase "was-validated"
+    // hace que el elemento que la tenga tenga un display block. Está en styles.css
 
-    let inputs= document.getElementById("pago").querySelectorAll(`[type="text"]`)
-    inputs=Array.from(inputs)
-    for (let input of inputs) {
-        input.addEventListener("input",function(){
-            if (inputs.every(validar)) {
-                document.getElementById("mensajeFormaDePago").classList.remove("invalido")
-            }else{
-                document.getElementById("mensajeFormaDePago").classList.add("invalido")
-            }
-        })
+    if (inputs.every(validar)) {
+        document.getElementById("mensajeFormaDePago").classList.remove("invalido")
+    } else {
+        document.getElementById("mensajeFormaDePago").classList.add("invalido")
     }
-
 }
 
 function formularioEnviado() {
@@ -201,7 +206,7 @@ function formularioEnviado() {
 
     ALERTA.classList.add("show")
 
-    let validaciones =document.getElementsByClassName("was-validated")
+    let validaciones = document.getElementsByClassName("was-validated")
 
     for (let validacion of validaciones) {
         validacion.classList.remove("was-validated")
@@ -230,8 +235,8 @@ function validarFormulario() {
 
 document.addEventListener("DOMContentLoaded", function () {
     getJSONData(CONVERSOR).then(function (conversor) {
-        carritoLocalStorage = JSON.parse(localStorage.getItem("carrito"))
-        if (carritoLocalStorage) {
+        let carritoLocalStorage = usuarios[usuarioActivo]["carrito"]
+        if (carritoLocalStorage.length > 0) {
             carrito = carritoLocalStorage
             for (const producto of carrito) {
                 agregarAlCarrito(producto)
@@ -254,6 +259,13 @@ document.addEventListener("DOMContentLoaded", function () {
         modal()
         validarFormulario()
 
-        formaDePago()
+
+        let inputs = document.getElementById("pago").querySelectorAll(`[type="text"]`)
+        inputs = Array.from(inputs)
+        for (let input of inputs) {
+            input.addEventListener("input",function(){
+                formaDePago(inputs)
+            })
+        }
     })
 })

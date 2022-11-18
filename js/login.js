@@ -9,12 +9,13 @@ function guardarDatos(mail,contrasenna){
         usuarios=JSON.parse(usuarios)
         // Si ya existe algún usuario con ese correo le actualiza la contraseña
         // y si no existe crea una propiedad con el mail del usuario con sus datos
-        if (usuarios[`${mail}`]) {
-            usuarios[`${mail}`].contrasenna=contrasenna
+        if (usuarios[mail]) {
+            usuarios[mail].contrasenna=contrasenna
         }else{
-            usuarios[`${mail}`]={
+            usuarios[mail]={
                 "mail":mail,
-                "contrasenna":contrasenna
+                "contrasenna":contrasenna,
+                "carrito":[]
             }
         }
     // Si no hay ningún usuario en el LocalStorage
@@ -24,9 +25,10 @@ function guardarDatos(mail,contrasenna){
         }
         // y le asigna a ese objeto una propiedad con el nombre del mail con
         // sus datos.
-        usuarios[`${mail}`]={
+        usuarios[mail]={
             "mail":mail,
-            "contrasenna":contrasenna
+            "contrasenna":contrasenna,
+            "carrito":[]
         }
     }
     // Y finalmente lo guarda en el LocalStorage.
@@ -35,18 +37,18 @@ function guardarDatos(mail,contrasenna){
 }
 
 function Ingresar(){
-    //Toma los valores que el usuario ingresó
+    // Toma los valores que el usuario ingresó.
     let mail=document.getElementById("mail").value
     let contrasenna=document.getElementById("contrasenna").value
 
-    if(mail!="" && contrasenna!==""){
-        //Guarda esos valores en el localStorage
+    if(mail!="" && contrasenna!=""){
+        // Guarda esos valores en el localStorage.
         guardarDatos(mail,contrasenna)
         localStorage.setItem("mail",mail)
         localStorage.setItem("contrasenna",contrasenna)
 
-        //En caso de que el usuario haya estado en una página y cerrado sesión
-        //se le devuelve a esa página, y sino, a index.
+        // En caso de que el usuario haya estado en una página y cerrado sesión
+        // se le devuelve a esa página, y sino, a index.
         if(sessionStorage.getItem("ultimaPagina")!=null){
             window.location=sessionStorage.getItem("ultimaPagina")
         }else{
@@ -54,7 +56,7 @@ function Ingresar(){
         }
         
     }else{
-        //Se le solicita que ingrese en el o los inputs que haya dejado vacíos
+        // Se le solicita que ingrese en el o los inputs que haya dejado vacíos.
         if(mail==""){
             inputVacio("mail");
             document.getElementById("mailVacio").innerHTML=`Ingresa tu contraseña`
@@ -69,8 +71,8 @@ document.addEventListener("DOMContentLoaded",function(){
     document.getElementById("Ingresar").addEventListener("click",function(){
         Ingresar()
     });
-    //Si el usuario da enter estando en el input del mail,
-    //se lo lleva al de la contraseña
+    // Si el usuario da enter estando en el input del mail,
+    // se lo lleva al de la contraseña.
     document.getElementById("mail").addEventListener("keydown",function(letra){
         if(letra.key=="Enter"){
             document.getElementById("contrasenna").focus()
